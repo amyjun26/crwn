@@ -1,28 +1,19 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import PostCard from './PostCard';
+import SavedLooks from './SavedLooks';
+import { POSTS } from '../data/posts';
 
 // ProfileTabs: Tabbed view of user's posts, activity, and favorites
 export default function ProfileTabs() {
-  const [activeTab, setActiveTab] = useState('posts');
-
-  // Example data - replace with real data
-  const posts = [
-    {
-      id: '1',
-      image: 'placeholder1.jpg',
-      description: 'My new protective style! 💁‍♀️',
-      likes: 89,
-      comments: 12
-    }
-  ];
+  const [activeTab, setActiveTab] = useState('favorites');
 
   const renderContent = () => {
     switch (activeTab) {
       case 'posts':
         return (
           <FlatList
-            data={posts}
+            data={POSTS}
             keyExtractor={item => item.id}
             renderItem={({ item }) => <PostCard post={item} />}
           />
@@ -34,11 +25,7 @@ export default function ProfileTabs() {
           </View>
         );
       case 'favorites':
-        return (
-          <View style={styles.emptyState}>
-            <Text>Your saved posts will appear here</Text>
-          </View>
-        );
+        return <SavedLooks />;
     }
   };
 

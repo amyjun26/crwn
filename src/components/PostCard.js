@@ -20,8 +20,15 @@ export default function PostCard({ post }) {
     <View style={styles.container}>
       {/* Post Image */}
       <View style={styles.imageContainer}>
-        {/* Replace with actual image */}
-        <View style={styles.imagePlaceholder} />
+        {post.imageSource ? (
+          <Image
+            source={post.imageSource}
+            style={styles.image}
+            resizeMode="cover"
+          />
+        ) : (
+          <View style={styles.imagePlaceholder} />
+        )}
       </View>
 
       {/* Description and Stylist */}
@@ -60,6 +67,10 @@ const styles = StyleSheet.create({
   },
   imagePlaceholder: {
     backgroundColor: '#e5e7eb',
+    width: '100%',
+    height: '100%'
+  },
+  image: {
     width: '100%',
     height: '100%'
   },
