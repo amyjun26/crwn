@@ -5,11 +5,12 @@ import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity } from 'rea
 export default function RecommendationSlider() {
   // Example recommendations - replace with real data
   const recommendations = [
-    { id: '1', title: 'Trending', image: 'placeholder.jpg' },
+    { id: '1', title: 'Trending', image: 'placeholder.jpg' }, // do we need images here? just text 
     { id: '2', title: 'New Stylists', image: 'placeholder.jpg' },
     { id: '3', title: 'Popular', image: 'placeholder.jpg' }
   ];
 
+  // horizontal scroll tabs
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Recommended</Text>
@@ -22,9 +23,8 @@ export default function RecommendationSlider() {
           <TouchableOpacity key={item.id} style={styles.item}>
             <View style={styles.imageContainer}>
               {/* Replace with actual images */}
-              <View style={styles.imagePlaceholder} />
-            </View>
-            <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.imageText}>{item.title}</Text>
+              </View>
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -52,15 +52,24 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: 120,
-    height: 120,
+    height: 40,
+    backgroundColor: '#FFB034', // change this to be darker later 
     borderRadius: 10,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    justifyContent: 'center'
   },
-  imagePlaceholder: {
-    backgroundColor: '#e5e7eb',
-    width: '100%',
-    height: '100%'
+  imageText: {
+    color: "#FFFFFF",
+    fontWeight: 'bold',
+    fontSize: 14,
+    textAlign: 'center'
+
   },
+  // imagePlaceholder: {
+  //   backgroundColor: '#e5e7eb',
+  //   width: '100%',
+  //   height: '100%'
+  // },
   title: {
     marginTop: 8,
     fontSize: 14,
